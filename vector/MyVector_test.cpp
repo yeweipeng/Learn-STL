@@ -44,7 +44,7 @@ TEST(vector, modify) {
 
 	myvec.clear();
 	vec.clear();
-	ASSERT_EQ(vec.back(), myvec.back());
+	//ASSERT_EQ(vec.back(), myvec.back());
 	ASSERT_EQ(vec.capacity(), myvec.capacity());
 }
 
