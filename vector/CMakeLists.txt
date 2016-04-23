@@ -1,0 +1,15 @@
+cmake_minimum_required (VERSION 2.8)
+set(PROJECT_NAME_STR unit-test)
+set(GTEST_ROOT_DIR /data1/ryanwpye/test/gtest-1.7.0)
+project (${PROJECT_NAME_STR})
+
+# enable_testing()
+aux_source_directory(. DIR_SRCS)
+include_directories(${GTEST_ROOT_DIR}/include)
+
+foreach( testsource ${DIR_SRCS} )
+  string( REPLACE ".cpp" "" testname ${testsource})
+  string( REPLACE "_test.cpp" ".hpp" testedname ${testsource})
+  add_executable(${testname} ${testsource} ${testedname})
+  target_link_libraries(${testname} ${GTEST_ROOT_DIR}/libgtest.a pthread)
+endforeach()
